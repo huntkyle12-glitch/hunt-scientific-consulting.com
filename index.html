@@ -143,7 +143,7 @@ h1 em { font-style: italic; color: var(--sage); }
 }
 .hero-card::before {
   content: '';
-  position: absolute; top: -1px; left: 40px; right: 40px;
+  position: absolute; top: -1px; left: 0; right: 0;
   height: 3px; background: var(--forest);
 }
 .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 32px; }
@@ -228,7 +228,7 @@ h2 em { font-style: italic; color: var(--sage); }
 
 /* ─── ABOUT ─── */
 #about { background: var(--white); }
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 60px; }
+.about-grid { display: grid; grid-template-columns: 1fr; gap: 0; align-items: start; margin-top: 60px; max-width: 680px; }
 .about-left {}
 .about-body { font-size: 13px; line-height: 2; color: var(--mid); margin-bottom: 20px; }
 .about-body strong { color: var(--ink); font-weight: 500; }
@@ -529,12 +529,6 @@ footer {
         </p>
       </div>
       <div class="about-right reveal">
-        <div class="result-cards">
-          <div class="result-card">
-            <div class="result-metric">10+</div>
-            <div class="result-desc">Years of experience spanning early clinical, late clinical, and commercial pharmaceutical manufacturing environments.</div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
