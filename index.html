@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hunt Scientific Consulting | QC & Compliance Consulting</title>
+<meta name="description" content="Pharmaceutical-grade QC and compliance consulting for biotech, pharma, and supplement manufacturers. Method validation, GMP systems, and FDA audit support.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0d1a12;
+  --forest: #1a4a2e;
+  --sage: #2d6e47;
+  --mint: #4a9e6a;
+  --mist: #e8f0eb;
+  --paper: #f5f7f5;
+  --white: #ffffff;
+  --mid: #5a7060;
+  --light: #8fa895;
+  --border: #d4e0d8;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Mono', 'Courier New', monospace;
+  background: var(--white);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 48px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: padding 0.3s;
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-weight: 600;
+  color: var(--forest); letter-spacing: 0.5px;
+  text-decoration: none;
+}
+.nav-logo span { font-style: italic; color: var(--sage); }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--mid); text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--forest); }
+.nav-cta {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  padding: 9px 20px;
+  border: 1px solid var(--forest);
+  color: var(--forest); background: transparent;
+  text-decoration: none; transition: all 0.2s;
+}
+.nav-cta:hover { background: var(--forest); color: var(--white); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { width: 22px; height: 1.5px; background: var(--forest); display: block; transition: all 0.3s; }
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 120px 48px 80px;
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  align-items: center;
+}
+.hero-eyebrow {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--sage); margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px;
+  opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+}
+.hero-eyebrow::before {
+  content: ''; display: block;
+  width: 32px; height: 1px; background: var(--sage);
+}
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(42px, 5.5vw, 72px);
+  font-weight: 500; line-height: 1.05;
+  color: var(--ink); letter-spacing: -1px;
+  margin-bottom: 28px;
+  opacity: 0; animation: fadeUp 0.8s 0.35s forwards;
+}
+h1 em { font-style: italic; color: var(--sage); }
+.hero-sub {
+  font-size: 13px; line-height: 1.9;
+  color: var(--mid); max-width: 440px;
+  margin-bottom: 44px;
+  opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
+}
+.hero-actions {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.8s 0.65s forwards;
+}
+.btn-primary {
+  padding: 14px 32px;
+  background: var(--forest); color: var(--white);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--sage); }
+.btn-ghost {
+  padding: 14px 32px;
+  background: transparent; color: var(--forest);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none; border: 1px solid var(--forest);
+  transition: all 0.2s;
+}
+.btn-ghost:hover { background: var(--mist); }
+
+.hero-right {
+  opacity: 0; animation: fadeIn 1s 0.5s forwards;
+}
+.hero-card {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  padding: 40px;
+  position: relative;
+}
+.hero-card::before {
+  content: '';
+  position: absolute; top: -1px; left: 40px; right: 40px;
+  height: 3px; background: var(--forest);
+}
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 32px; }
+.stat-item {}
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px; font-weight: 500;
+  color: var(--forest); line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--light); }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag {
+  font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  color: var(--mid);
+}
+
+/* ─── SECTION BASE ─── */
+section { padding: 100px 48px; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-label {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--sage); margin-bottom: 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--sage); }
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 500; line-height: 1.1;
+  color: var(--ink); letter-spacing: -0.5px;
+  margin-bottom: 20px;
+}
+h2 em { font-style: italic; color: var(--sage); }
+.section-intro { font-size: 13px; line-height: 1.9; color: var(--mid); max-width: 560px; }
+
+/* ─── CREDIBILITY BAR ─── */
+#credibility {
+  padding: 32px 48px;
+  background: var(--ink);
+  border-top: 1px solid #1e3028;
+}
+.cred-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; gap: 48px; flex-wrap: wrap;
+}
+.cred-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--light); white-space: nowrap; }
+.cred-divider { width: 1px; height: 20px; background: #2a3f32; flex-shrink: 0; }
+.cred-items { display: flex; gap: 36px; flex-wrap: wrap; }
+.cred-item { font-size: 11px; color: #8fa895; letter-spacing: 0.5px; }
+
+/* ─── SERVICES ─── */
+#services { background: var(--paper); }
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1px; background: var(--border); margin-top: 60px; }
+.service-card {
+  background: var(--white); padding: 36px 32px;
+  transition: background 0.2s;
+  position: relative; overflow: hidden;
+}
+.service-card:hover { background: var(--mist); }
+.service-card::after {
+  content: ''; position: absolute;
+  top: 0; left: 0; width: 3px; height: 0;
+  background: var(--sage);
+  transition: height 0.3s;
+}
+.service-card:hover::after { height: 100%; }
+.service-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px; color: var(--light);
+  margin-bottom: 20px;
+}
+.service-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 500;
+  color: var(--ink); margin-bottom: 14px; line-height: 1.2;
+}
+.service-desc { font-size: 11.5px; line-height: 1.8; color: var(--mid); margin-bottom: 20px; }
+.service-rate { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--sage); }
+
+/* ─── ABOUT ─── */
+#about { background: var(--white); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 60px; }
+.about-left {}
+.about-body { font-size: 13px; line-height: 2; color: var(--mid); margin-bottom: 20px; }
+.about-body strong { color: var(--ink); font-weight: 500; }
+.credentials { margin-top: 40px; }
+.cred-title { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--sage); margin-bottom: 20px; }
+.cred-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.cred-list li {
+  font-size: 11.5px; color: var(--mid); line-height: 1.6;
+  padding-left: 16px; position: relative;
+}
+.cred-list li::before {
+  content: ''; position: absolute; left: 0; top: 8px;
+  width: 5px; height: 1px; background: var(--sage);
+}
+.about-right {}
+.result-cards { display: flex; flex-direction: column; gap: 16px; }
+.result-card {
+  border: 1px solid var(--border); padding: 24px 28px;
+  position: relative;
+}
+.result-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--forest), var(--mint));
+}
+.result-metric {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px; font-weight: 500; color: var(--forest);
+  line-height: 1; margin-bottom: 6px;
+}
+.result-desc { font-size: 11px; color: var(--mid); line-height: 1.6; }
+
+/* ─── PROCESS ─── */
+#process { background: var(--ink); }
+#process .section-label { color: var(--mint); }
+#process .section-label::before { background: var(--mint); }
+#process h2 { color: var(--white); }
+#process .section-intro { color: #8fa895; }
+.process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: #1e2e25; margin-top: 60px; }
+.process-step { background: var(--ink); padding: 36px 28px; }
+.step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px; font-weight: 400;
+  color: #1e2e25; line-height: 1; margin-bottom: 20px;
+}
+.step-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px; color: var(--white); margin-bottom: 12px;
+}
+.step-desc { font-size: 11px; line-height: 1.8; color: #8fa895; }
+
+/* ─── WHO I WORK WITH ─── */
+#clients { background: var(--paper); }
+.clients-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 60px; }
+.client-card {
+  background: var(--white); border: 1px solid var(--border);
+  padding: 28px 24px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.client-card:hover { border-color: var(--sage); transform: translateY(-2px); }
+.client-icon { font-size: 24px; margin-bottom: 16px; }
+.client-type {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-weight: 500; color: var(--ink); margin-bottom: 10px;
+}
+.client-desc { font-size: 11px; line-height: 1.8; color: var(--mid); }
+
+/* ─── CONTACT ─── */
+#contact { background: var(--white); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 60px; }
+.contact-info {}
+.contact-intro { font-size: 13px; line-height: 1.9; color: var(--mid); margin-bottom: 40px; }
+.contact-details { display: flex; flex-direction: column; gap: 20px; }
+.contact-item { display: flex; gap: 16px; align-items: flex-start; }
+.contact-item-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--light); width: 60px; flex-shrink: 0; padding-top: 2px; }
+.contact-item-val { font-size: 12px; color: var(--ink); }
+.contact-item-val a { color: var(--ink); text-decoration: none; }
+.contact-item-val a:hover { color: var(--sage); }
+.contact-form { background: var(--paper); padding: 40px; }
+.form-group { margin-bottom: 20px; }
+.form-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); display: block; margin-bottom: 8px; }
+.form-input, .form-select, .form-textarea {
+  width: 100%; padding: 12px 16px;
+  background: var(--white); border: 1px solid var(--border);
+  font-family: 'DM Mono', monospace; font-size: 12px; color: var(--ink);
+  outline: none; transition: border-color 0.2s;
+  appearance: none;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--sage); }
+.form-textarea { min-height: 100px; resize: vertical; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-submit {
+  width: 100%; padding: 14px;
+  background: var(--forest); color: var(--white);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  border: none; cursor: pointer; transition: background 0.2s;
+  margin-top: 8px;
+}
+.form-submit:hover { background: var(--sage); }
+.form-note { font-size: 10px; color: var(--light); margin-top: 12px; line-height: 1.6; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--ink);
+  padding: 40px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px; color: var(--white);
+  text-decoration: none;
+}
+.footer-logo span { font-style: italic; color: var(--mint); }
+.footer-copy { font-size: 10px; color: #4a6050; letter-spacing: 1px; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #4a6050; text-decoration: none; }
+.footer-links a:hover { color: var(--mint); }
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.7s, transform 0.7s;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ─── MOBILE ─── */
+@media (max-width: 900px) {
+  nav { padding: 18px 24px; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .mobile-menu {
+    display: none; position: fixed; inset: 0; background: var(--white);
+    z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--forest); text-decoration: none; }
+  section { padding: 72px 24px; }
+  #hero { padding: 100px 24px 72px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  .hero-right { display: none; }
+  .about-grid { grid-template-columns: 1fr; gap: 48px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  #credibility { padding: 24px; }
+  .cred-inner { gap: 24px; }
+  footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Hunt <span>Scientific</span> Consulting</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#clients">Clients</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in Touch</a>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#process" onclick="toggleMenu()">Process</a>
+  <a href="#clients" onclick="toggleMenu()">Clients</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Pharmaceutical-Grade Quality</div>
+      <h1>QC &amp; Compliance<br>Consulting for <em>Biotech</em><br>&amp; Life Sciences</h1>
+      <p class="hero-sub">
+        Bringing pharmaceutical-grade rigor to biotech, pharma, and supplement manufacturers. Method validation, GMP systems, and FDA audit support — without the overhead of a full-time hire.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Schedule a Consultation</a>
+        <a href="#services" class="btn-ghost">View Services</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card">
+        <div class="stat-grid">
+          <div class="stat-item">
+            <div class="stat-num">10+</div>
+            <div class="stat-label">Years in Pharma &amp; Biotech QC</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">4</div>
+            <div class="stat-label">Multi-Site Method Transfers Led</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">40%</div>
+            <div class="stat-label">Reduction in Review TAT</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">91%</div>
+            <div class="stat-label">Reduction in Calculation Errors</div>
+          </div>
+        </div>
+        <div class="hero-tags">
+          <span class="tag">Method Validation</span>
+          <span class="tag">GMP / GLP</span>
+          <span class="tag">FDA Audits</span>
+          <span class="tag">21 CFR Part 111</span>
+          <span class="tag">CAPA</span>
+          <span class="tag">Flow Cytometry</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDIBILITY BAR -->
+<div id="credibility">
+  <div class="cred-inner">
+    <span class="cred-label">Experience at</span>
+    <div class="cred-divider"></div>
+    <div class="cred-items">
+      <span class="cred-item">Novartis</span>
+      <span class="cred-item">Rocket Pharma</span>
+      <span class="cred-item">Galapagos Pharmaceuticals</span>
+      <span class="cred-item">Labcorp</span>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-label reveal">Services</div>
+    <h2 class="reveal">What I can do <em>for you</em></h2>
+    <p class="section-intro reveal">Targeted engagements built around your timeline and compliance needs — from single-project support to ongoing fractional QC leadership.</p>
+    <div class="services-grid reveal">
+
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-name">Method Validation &amp; Transfer</div>
+        <div class="service-desc">Design, execute, and document validation protocols for potency assays, flow cytometry, ELISA, and dPCR methods. Lead QC method transfers between sponsor and CDMO/CRO sites.</div>
+        <div class="service-rate">$175–275/hr · or project-based</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-name">GMP System Build &amp; Gap Assessment</div>
+        <div class="service-desc">Audit existing operations against 21 CFR Part 211 or Part 111, deliver written gap reports with prioritized remediation steps, and build quality systems from the ground up.</div>
+        <div class="service-rate">$2,500–5,000 flat fee</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-name">FDA Audit Preparation &amp; SME Support</div>
+        <div class="service-desc">Prepare QC teams for FDA inspections, serve as subject matter expert during audits for analytical and potency methods, and author QC sections of regulatory submissions.</div>
+        <div class="service-rate">$250–350/hr during active audits</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <div class="service-name">QC Investigation &amp; CAPA</div>
+        <div class="service-desc">Lead OOS/OOT investigations, deviation write-ups, and CAPA development. Time-sensitive engagements handled with urgency. Experienced across both human and veterinary products.</div>
+        <div class="service-rate">$200–300/hr · urgent premium applies</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <div class="service-name">SOP &amp; Documentation Development</div>
+        <div class="service-desc">Write or overhaul SOP libraries, batch record templates, validation protocols, and QC manuals aligned to current regulatory expectations and your manufacturing workflow.</div>
+        <div class="service-rate">$5,000–15,000 per project</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">06</div>
+        <div class="service-name">Fractional QC Director Retainer</div>
+        <div class="service-desc">Serve as an embedded part-time QC lead for growing biotech companies and supplement brands who need senior QC oversight without the cost of a full-time director.</div>
+        <div class="service-rate">$2,500–5,000/month retainer</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label reveal">About</div>
+    <h2 class="reveal">Pharmaceutical rigor.<br><em>Without the overhead.</em></h2>
+    <div class="about-grid">
+      <div class="about-left reveal">
+        <p class="about-body">
+          I'm <strong>Kyle Hunt</strong>, a QC and compliance consultant based in Winston-Salem, NC. I spent over a decade building and running quality control programs at pharmaceutical and biotech companies — from CAR-T programs at Novartis to clinical-stage cell therapy at Rocket Pharma and commercial operations at Galapagos Pharmaceuticals.
+        </p>
+        <p class="about-body">
+          I've led method validations across four manufacturing sites simultaneously, served as an SME during FDA regulatory audits, and built QC systems that reduced review turnaround time by 40% and eliminated manual calculation errors by 91%.
+        </p>
+        <p class="about-body">
+          Now I bring that same level of rigor to organizations that need pharmaceutical-grade quality expertise — but can't justify, or don't yet need, a full-time senior hire. Whether you're a biotech building your first QC infrastructure or a supplement manufacturer navigating 21 CFR Part 111, I can step in quickly and deliver results.
+        </p>
+        <div class="credentials">
+          <div class="cred-title">Background</div>
+          <ul class="cred-list">
+            <li>Senior QC Scientist — Galapagos Pharmaceuticals (Commercial)</li>
+            <li>QC Scientist — Rocket Pharma (Clinical-Stage Cell Therapy)</li>
+            <li>Quality Analyst — Novartis (CAR-T Manufacturing)</li>
+            <li>Analytical Scientist — Labcorp Drug Development</li>
+            <li>B.S. Marine Biology &amp; Fisheries Science; Veterinary Assistant background</li>
+            <li>Expertise: Flow Cytometry, ELISA, dPCR, qPCR, HPLC, Potency Assays</li>
+          </ul>
+        </div>
+      </div>
+      <div class="about-right reveal">
+        <div class="result-cards">
+          <div class="result-card">
+            <div class="result-metric">40%</div>
+            <div class="result-desc">Reduction in QC review turnaround time through workflow redesign and process automation at Galapagos Pharmaceuticals.</div>
+          </div>
+          <div class="result-card">
+            <div class="result-metric">91%</div>
+            <div class="result-desc">Reduction in manual calculation errors following implementation of automated QC data systems across multiple product lines.</div>
+          </div>
+          <div class="result-card">
+            <div class="result-metric">4</div>
+            <div class="result-desc">Simultaneous QC method transfers led across four geographically distinct manufacturing and testing sites.</div>
+          </div>
+          <div class="result-card">
+            <div class="result-metric">10+</div>
+            <div class="result-desc">Years of experience spanning early clinical, late clinical, and commercial pharmaceutical manufacturing environments.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-inner">
+    <div class="section-label reveal">How It Works</div>
+    <h2 class="reveal">A straightforward <em>engagement process</em></h2>
+    <p class="section-intro reveal">Most engagements go from first call to active work within two weeks. No lengthy procurement cycles.</p>
+    <div class="process-steps reveal">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-name">Discovery Call</div>
+        <div class="step-desc">30-minute call to understand your situation, timeline, and where the gaps are. No charge, no obligation.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-name">Scope &amp; Proposal</div>
+        <div class="step-desc">Clear written scope of work with fixed fees or hourly estimate, timeline, and deliverables. No ambiguity.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-name">Engagement</div>
+        <div class="step-desc">On-site or remote work begins. Regular check-ins, transparent progress, and documentation throughout.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="step-name">Delivery &amp; Handoff</div>
+        <div class="step-desc">Final deliverables with full documentation. Optional ongoing retainer to maintain and build on the work completed.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO I WORK WITH -->
+<section id="clients">
+  <div class="section-inner">
+    <div class="section-label reveal">Who I Work With</div>
+    <h2 class="reveal">Built for organizations at <em>every stage</em></h2>
+    <div class="clients-grid reveal">
+      <div class="client-card">
+        <div class="client-icon">🧬</div>
+        <div class="client-type">Clinical-Stage Biotechs</div>
+        <div class="client-desc">Building QC infrastructure ahead of IND or BLA filing. Need a senior scientist without full-time headcount.</div>
+      </div>
+      <div class="client-card">
+        <div class="client-icon">🏭</div>
+        <div class="client-type">CDMOs &amp; CROs</div>
+        <div class="client-desc">Project-based QC support between full-time hires, method transfers, and site-readiness assessments.</div>
+      </div>
+      <div class="client-card">
+        <div class="client-icon">💊</div>
+        <div class="client-type">Supplement Manufacturers</div>
+        <div class="client-desc">21 CFR Part 111 compliance, GMP gap assessments, SOP development, and FDA inspection preparation.</div>
+      </div>
+      <div class="client-card">
+        <div class="client-icon">🔬</div>
+        <div class="client-type">Pharma &amp; Specialty Labs</div>
+        <div class="client-desc">Method validation, OOS/OOT investigation support, and QC documentation remediation.</div>
+      </div>
+      <div class="client-card">
+        <div class="client-icon">🌱</div>
+        <div class="client-type">Emerging Biotech Startups</div>
+        <div class="client-desc">First QC system builds, early-stage GMP implementation, and regulatory strategy support.</div>
+      </div>
+      <div class="client-card">
+        <div class="client-icon">🐾</div>
+        <div class="client-type">Veterinary &amp; Pet Product Cos.</div>
+        <div class="client-desc">Quality systems for animal health products, with relevant background in veterinary science and pet care.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label reveal">Contact</div>
+    <h2 class="reveal">Let's talk about <em>your project</em></h2>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p class="contact-intro">
+          The fastest way to get started is a 30-minute discovery call. Tell me what you're working on and I'll give you a straight answer about whether and how I can help — at no charge.
+        </p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <span class="contact-item-label">Phone</span>
+            <span class="contact-item-val"><a href="tel:+19082689770">+1 (908) 268-9770</a></span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-label">Email</span>
+            <span class="contact-item-val"><a href="mailto:Kyle.Hunt@hunt-scientific-consulting.com">Kyle.Hunt@hunt-scientific-consulting.com</a></span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-label">Location</span>
+            <span class="contact-item-val">Winston-Salem, NC<br>Serving clients nationally &amp; remotely</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-label">Response</span>
+            <span class="contact-item-val">Within 1 business day</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">First Name</label>
+              <input type="text" class="form-input" placeholder="Jane" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name</label>
+              <input type="text" class="form-input" placeholder="Smith" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Company</label>
+            <input type="text" class="form-input" placeholder="Acme Biotech Inc." required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" placeholder="jane@company.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">What do you need help with?</label>
+            <select class="form-select form-input">
+              <option value="">Select a service...</option>
+              <option>Method Validation / Transfer</option>
+              <option>GMP System / Gap Assessment</option>
+              <option>FDA Audit Preparation</option>
+              <option>QC Investigation / CAPA</option>
+              <option>SOP / Documentation Development</option>
+              <option>Fractional QC Director Retainer</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tell me about your project</label>
+            <textarea class="form-textarea" placeholder="Brief description of your situation, timeline, and what you're looking for..."></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="submitBtn">Send Message</button>
+          <p class="form-note">Your information is kept strictly confidential. I'll follow up within one business day.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">Hunt <span>Scientific</span> Consulting</a>
+  <span class="footer-copy">© 2026 Hunt Scientific Consulting LLC · Winston-Salem, NC</span>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+// Mobile menu
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Stagger children of reveal grids
+document.querySelectorAll('.services-grid, .clients-grid, .process-steps, .result-cards').forEach(grid => {
+  Array.from(grid.children).forEach((child, i) => {
+    child.style.transitionDelay = (i * 0.08) + 's';
+  });
+});
+
+// Form submit
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = 'Message Sent ✓';
+  btn.style.background = '#2d6e47';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Send Message';
+    btn.style.background = '';
+    btn.disabled = false;
+    e.target.reset();
+  }, 4000);
+}
+
+// Shrink nav on scroll
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  nav.style.padding = window.scrollY > 50 ? '14px 48px' : '20px 48px';
+});
+</script>
+</body>
+</html>
