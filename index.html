@@ -624,7 +624,7 @@ footer {
         </div>
       </div>
       <div class="contact-form reveal">
-        <form onsubmit="handleSubmit(event)">
+        <form action="https://formspree.io/f/xwvzyvyd" method="POST">
           <div class="form-row">
             <div class="form-group">
               <label class="form-label">First Name</label>
@@ -660,7 +660,7 @@ footer {
             <label class="form-label">Tell me about your project</label>
             <textarea class="form-textarea" placeholder="Brief description of your situation, timeline, and what you're looking for..."></textarea>
           </div>
-          <button type="submit" class="form-submit" id="submitBtn">Send Message</button>
+          <button type="submit" class="form-submit">Send Message</button>
           <p class="form-note">Your information is kept strictly confidential. I'll follow up within one business day.</p>
         </form>
       </div>
@@ -698,20 +698,7 @@ document.querySelectorAll('.services-grid, .clients-grid, .process-steps, .resul
   });
 });
 
-// Form submit
-function handleSubmit(e) {
-  e.preventDefault();
-  const btn = document.getElementById('submitBtn');
-  btn.textContent = 'Message Sent ✓';
-  btn.style.background = '#2d6e47';
-  btn.disabled = true;
-  setTimeout(() => {
-    btn.textContent = 'Send Message';
-    btn.style.background = '';
-    btn.disabled = false;
-    e.target.reset();
-  }, 4000);
-}
+// Form handled by Formspree
 
 // Shrink nav on scroll
 window.addEventListener('scroll', () => {
